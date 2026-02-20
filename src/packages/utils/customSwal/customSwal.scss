@@ -1,0 +1,101 @@
+.rt-alert {
+  border-radius: 16px;
+  padding: 24px;
+  width: 300px;
+  &__title {
+    position: absolute;
+    top: 25px;
+    left: 24px;
+    padding: 0;
+    height: 24px;
+    color: $primary;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+  }
+  &__text {
+    margin-top: 8px;
+    padding: 0;
+    color: $primary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    white-space: pre-line;
+    word-break: keep-all;
+  }
+
+  &__icon {
+    animation: none !important;
+    margin-block: 50px 0;
+    border: 0;
+    > .swal2-icon-content {
+      animation: none !important;
+    }
+  }
+  &__actions {
+    column-gap: 12px;
+    margin-top: 24px;
+    button.swal2-styled {
+      padding: 6px 0;
+      width: 90px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 100%;
+    }
+  }
+  &__closeBtn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    color: $primary;
+    font-size: 0;
+    &:after {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      border-radius: 3px;
+      background-color: $primary;
+      width: 16px;
+      height: 1px;
+      content: "";
+    }
+    &:before {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) rotate(-45deg);
+      border-radius: 3px;
+      background-color: $primary;
+      width: 16px;
+      height: 1px;
+      content: "";
+    }
+  }
+  &__confirmBtn {
+    margin: 0;
+    background-color: $primary;
+    color: #fff;
+    &:active,
+    &:hover {
+      background-color: $primary !important;
+    }
+  }
+  &__cancelBtn {
+    margin: 0;
+    border: 1px solid $body-light;
+    background-color: #fff;
+    color: $body-light;
+    &:active,
+    &:hover {
+      background-color: #fff !important;
+    }
+  }
+}
+
+div:where(.swal2-container) {
+  z-index: 2450 !important;
+}
