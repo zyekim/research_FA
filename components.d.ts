@@ -11,8 +11,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AppDrawer: typeof import('./src/packages/shared/components/layout/AppDrawer.vue')['default']
-    AppHeader: typeof import('./src/packages/shared/components/layout/AppHeader.vue')['default']
+    AppDrawer: typeof import('./src/packages/shared/components/layout/default/AppDrawer.vue')['default']
+    AppHeader: typeof import('./src/packages/shared/components/layout/default/AppHeader.vue')['default']
     PagingComp: typeof import('./src/packages/shared/components/global/PagingComp.vue')['default']
     PopOver: typeof import('./src/packages/shared/components/global/PopOver.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
