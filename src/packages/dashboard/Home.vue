@@ -1,4 +1,5 @@
 <script setup lang="ts"></script>
+
 <template>
-  <p>OrderList.vue</p>
+  <div>Home</div>
 </template>
