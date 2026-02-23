@@ -1,0 +1,61 @@
+/*
+  mixin.scss
+*/
+
+@use "sass:map";
+
+// breakpoint
+$breakpoints: (
+  mobile: (
+    min: 360px,
+    max: 767.98px
+  ),
+  tablet: (
+    min: 768px,
+    max: 1023.98px
+  ),
+  desktop: (
+    min: 1024px,
+    max: 1440px
+  )
+);
+
+@mixin respond($device) {
+  // @debug $device;
+  $range: map.get($breakpoints, $device);
+  $min: map.get($range, min);
+  $max: map.get($range, max);
+  // @debug $min, $max;
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+// 해당 디바이스 이상
+// ex: tablet 사이즈 이상
+@mixin respond-up($device) {
+  $range: map.get($breakpoints, $device);
+  $min: map.get($range, min);
+  @media (min-width: $min) {
+    @content;
+  }
+}
+// 해당 디바이스 이하
+// ex: tablet 사이즈 이하
+@mixin respond-down($device) {
+  $range: map.get($breakpoints, $device);
+  $max: map.get($range, max);
+  @media (max-width: $max) {
+    @content;
+  }
+}
+// 디바이스 구간
+@mixin respond-between($from, $to) {
+  $from-range: map.get($breakpoints, $from);
+  $to-range: map.get($breakpoints, $to);
+  $min: map.get($from-range, min);
+  $max: map.get($to-range, max);
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}

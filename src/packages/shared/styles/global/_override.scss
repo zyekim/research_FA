@@ -1,0 +1,438 @@
+/*
+  - vuetify component override
+*/
+@use "./mixin" as *;
+@use "../variables" as *;
+
+.v-application {
+  color: $primary;
+}
+.v-selection-control__input > .v-icon {
+  opacity: 1 !important;
+}
+
+.v-input {
+  .v-selection-control {
+    --v-disabled-opacity: 1;
+    .v-label {
+      font-weight: 400;
+      line-height: 140%;
+    }
+    &--disabled {
+      .v-label {
+        color: $body-light-gray;
+      }
+    }
+  }
+  .v-field__outline {
+    --v-field-border-opacity: 1;
+    color: $line-navy;
+  }
+  .v-input__details {
+    padding-inline: 10px !important;
+    @include respond-down("tablet") {
+      padding-inline: 14px !important;
+    }
+    .v-messages {
+      opacity: 1;
+    }
+  }
+  .v-field {
+    --v-input-control-height: 36px;
+    --v-field-padding-start: 10px;
+    --v-field-padding-end: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    letter-spacing: normal;
+    .v-field__input {
+      opacity: 1;
+      padding-block: 0;
+      min-height: var(--v-input-control-height);
+      input::placeholder {
+        color: #141b6d;
+      }
+    }
+    &.v-field--variant-outlined.v-field--focused {
+      &:not(.v-field--error) {
+        .v-field__outline {
+          color: $primary;
+        }
+      }
+      .v-field__outline {
+        --v-field-border-width: 1px;
+      }
+    }
+
+    .v-field__clearable,
+    .v-field__append-inner {
+      .v-icon {
+        opacity: 1 !important;
+        font-size: 16px;
+      }
+    }
+    .v-field__append-inner .v-icon {
+      margin-inline: 4px;
+    }
+    .v-field--appended {
+      padding-inline-end: 6px;
+    }
+
+    // 모바일,태블릿
+    @include respond-down("tablet") {
+      --v-input-control-height: 48px;
+      --v-field-padding-start: 14px;
+      --v-field-padding-end: 14px;
+      .v-field__input {
+        min-height: var(--v-input-control-height);
+      }
+      .v-field--appended {
+        padding-inline-end: 8px;
+      }
+    }
+  }
+  // 비활성화
+  &--disabled,
+  &--readonly:not(.rt-file-input) {
+    .v-field {
+      color: $body-light-gray;
+      &--disabled {
+        --v-disabled-opacity: 1;
+        opacity: var(--v-disabled-opacity);
+      }
+    }
+    .v-field--variant-outlined .v-field__outline__start,
+    .v-field--variant-outlined .v-field__outline__end {
+      border-color: $line-gray;
+    }
+  }
+  &.v-textarea .v-field__input {
+    padding: 14px !important;
+  }
+}
+
+.v-select {
+  .v-field .v-field__input {
+    flex-wrap: nowrap;
+    .v-select__selection {
+      min-width: 0;
+      > span:not(.text-green) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    > input {
+      align-self: center !important;
+    }
+  }
+}
+
+.v-checkbox {
+  // default
+  &.v-input--density-default {
+    --v-input-control-height: 20px;
+    .v-selection-control--density-default {
+      --v-selection-control-size: 26px;
+      .v-selection-control__input > .v-icon {
+        font-size: 24px;
+      }
+    }
+  }
+  &.v-input--density-compact {
+    // compact
+    --v-input-control-height: 20px;
+    .v-selection-control--density-compact {
+      --v-selection-control-size: 18px;
+      .v-selection-control__input > .v-icon {
+        font-size: 18px;
+      }
+    }
+    // 반응형 추가
+    @include respond("mobile") {
+      --v-selection-control-size: 26px;
+      .v-selection-control__input > .v-icon {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .v-selection-control--error:not(.v-selection-control--disabled) .v-label {
+    color: $primary !important;
+  }
+}
+
+.v-checkbox-btn {
+  &.v-selection-control--density-compact {
+    --v-input-control-height: 20px;
+    --v-selection-control-size: 20px;
+    .v-selection-control__input > .v-icon {
+      font-size: 18px;
+    }
+    @include respond("mobile") {
+      --v-selection-control-size: 26px;
+      .v-selection-control__input > .v-icon {
+        font-size: 24px;
+      }
+    }
+  }
+  &.v-selection-control--disabled {
+    // 비활성화 icon
+    --v-disabled-opacity: 1;
+    .v-selection-control__input {
+      // default
+      border-radius: 0;
+      background: url(/src/assets/img/icon/disable-checkbox.png) no-repeat
+        center;
+      background-size: cover;
+      // indeterminate
+      &:has(input[aria-checked="mixed"]) {
+        background: url(/src/assets/img/icon/disable-checkbox-indeter.png)
+          no-repeat center;
+        background-size: cover;
+      }
+      svg {
+        display: none;
+      }
+    }
+    &.v-selection-control--dirty {
+      .v-selection-control__input {
+        // checked
+        background: url(/src/assets/img/icon/disable-checked.png) no-repeat
+          center;
+        background-size: cover;
+      }
+    }
+  }
+}
+.v-radio {
+  column-gap: 6px;
+  // default
+  &.v-selection-control--density-default {
+    --v-selection-control-size: 26px;
+    .v-selection-control__input > .v-icon {
+      font-size: 24px;
+    }
+  }
+  &.v-selection-control--density-compact {
+    --v-selection-control-size: 20px;
+    .v-selection-control__input > .v-icon {
+      font-size: 18px;
+    }
+    // 반응형 추가
+    @include respond("mobile") {
+      --v-selection-control-size: 26px;
+      .v-selection-control__input > .v-icon {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &.v-selection-control--disabled {
+    --v-disabled-opacity: 1;
+
+    .v-selection-control__input {
+      border-radius: 0;
+      background: url(/src/assets/img/icon/disable-radio.png) no-repeat center;
+      background-size: cover;
+      svg {
+        display: none;
+      }
+    }
+  }
+  .v-selection-control--error:not(.v-selection-control--disabled) .v-label {
+    color: $primary !important;
+  }
+}
+.v-selection-control-group {
+  row-gap: 12px;
+  &--inline {
+    column-gap: 36px;
+  }
+}
+
+.v-btn {
+  // 공통
+  &.v-btn--size-default {
+    font-weight: 700;
+    font-size: 16px;
+    @include respond-down("tablet") {
+      --v-btn-height: 48px;
+    }
+  }
+  .v-btn__append {
+    margin-inline-start: 4px;
+    .v-icon--size-default {
+      font-size: 14px;
+    }
+  }
+  .v-btn__prepend {
+    margin-inline-end: 4px;
+    .v-icon--size-default {
+      font-size: 14px;
+    }
+  }
+  &--disabled {
+    opacity: 1 !important;
+    &.v-btn--variant-outlined {
+      border: 1px solid $bright-gray;
+      .v-btn__content,
+      .v-btn__prepend {
+        color: $body-light-gray;
+      }
+    }
+    &.v-btn--variant-flat {
+      background-color: $disable !important;
+      .v-btn__overlay {
+        opacity: 0 !important;
+      }
+    }
+  }
+  // 사이즈 별
+  &.v-btn--density-default {
+    padding: 0 20px;
+    font-size: 16px;
+  }
+  &.v-btn--density-comfortable {
+    padding: 0 16px;
+    font-size: 14px;
+    @include respond-down("tablet") {
+      height: 36px;
+      font-size: 16px;
+    }
+  }
+  &.v-btn--icon {
+    padding-inline: 0;
+  }
+  // variant 별
+  &.v-btn--variant-outlined {
+    border-width: 1px !important;
+  }
+  // 링크전용 버튼
+  &.rt-link-btn {
+    background: transparent;
+    padding: 4px;
+    height: auto !important;
+    min-height: 24px;
+    .v-btn__content {
+      position: relative;
+      column-gap: 4px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: normal;
+      text-transform: none;
+      &:after {
+        position: absolute;
+        bottom: -3px;
+        background-color: currentColor;
+        width: calc(100% + 2px);
+        height: 1px;
+        content: "";
+      }
+    }
+  }
+}
+
+.v-switch {
+  &.v-switch--inset {
+    .v-selection-control {
+      --v-input-control-height: 24px;
+      @include respond-down("tablet") {
+        --v-input-control-height: 36px;
+      }
+      &__wrapper {
+        --v-selection-control-size: 24px;
+        @include respond-down("tablet") {
+          --v-selection-control-size: 36px;
+        }
+      }
+    }
+    .v-switch__track {
+      opacity: 1;
+      min-width: 50px;
+      height: 24px;
+      @include respond-down("tablet") {
+        min-width: 80px;
+        height: 36px;
+      }
+    }
+    .v-switch__thumb {
+      transform: none;
+      width: 20px;
+      height: 20px;
+      @include respond-down("tablet") {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+}
+// switch thumb location
+
+.v-locale--is-ltr.v-switch .v-selection-control__input,
+.v-locale--is-ltr .v-switch .v-selection-control__input {
+  transform: translateX(-12px) !important;
+  @include respond-down("tablet") {
+    transform: translateX(-20px) !important;
+  }
+}
+.v-locale--is-ltr.v-switch
+  .v-selection-control--dirty
+  .v-selection-control__input,
+.v-locale--is-ltr
+  .v-switch
+  .v-selection-control--dirty
+  .v-selection-control__input {
+  transform: translateX(12px) !important;
+  @include respond-down("tablet") {
+    transform: translateX(20px) !important;
+  }
+}
+
+.v-overlay__scrim {
+  opacity: 0.4 !important;
+  background: #000 !important;
+}
+
+.v-snackbar {
+  padding-top: 84px !important;
+  @include respond-down("tablet") {
+    padding-top: 70px !important;
+  }
+  .v-snackbar--variant-elevated {
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+  }
+  > * {
+    line-height: inherit;
+    white-space: pre-wrap !important;
+  }
+  .v-snackbar__content {
+    padding: 16px;
+    line-height: 20px;
+  }
+}
+
+.v-chip {
+  &.v-chip.v-chip--density-compact {
+    height: 25px !important;
+    font-size: 14px;
+    &.v-chip--size-small {
+      padding-inline: 8px !important;
+      height: 18px !important;
+      font-size: 11px !important;
+    }
+  }
+  &.v-chip--variant-outlined {
+    border-width: 1px;
+  }
+}
+
+.v-expansion-panels {
+  .v-expansion-panel {
+    border-radius: 0 !important;
+  }
+  .v-expansion-panel-title__icon .v-icon {
+    font-size: 14px;
+  }
+}

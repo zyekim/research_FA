@@ -1,0 +1,215 @@
+/*
+  table override
+*/
+
+@use "./mixin" as *;
+@use "../variables" as *;
+
+.rt-table.v-table {
+  &.v-table--density-default {
+    --v-table-header-height: 50px;
+    --v-table-row-height: 50px;
+  }
+  &.v-table--fixed-header {
+    border-radius: 0;
+    .v-table__wrapper {
+      table {
+        // thead
+        &:has(tbody.rt-table__noData) {
+          height: 100%;
+        }
+        thead {
+          z-index: 3;
+          tr {
+            th {
+              vertical-align: middle;
+              box-shadow:
+                inset 0 1px 0 $body-light,
+                inset 0 -1px 0 $body-light;
+              background: $bg-navy;
+              padding-inline: 12px;
+              font-style: normal;
+              font-weight: 700;
+              font-size: 16px;
+              line-height: 140%;
+              text-align: center;
+              white-space: nowrap;
+            }
+          }
+        }
+        //tbody
+        tbody {
+          tr {
+            td {
+              vertical-align: middle;
+              border-bottom: 1px solid $line-navy;
+              background-color: #fff;
+              padding-inline: 12px;
+              padding-block: 12px;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 140%;
+              text-align: center;
+              white-space: nowrap;
+              .v-field .v-field__input {
+                min-height: 32px !important;
+              }
+              .v-btn {
+                height: 28px !important;
+              }
+              @include respond-down("tablet") {
+                .v-field .v-field__input {
+                  min-height: 32px !important;
+                }
+                .v-btn {
+                  height: 28px !important;
+                }
+              }
+            }
+          }
+          &.rt-table__noData {
+            tr {
+              height: 100% !important;
+
+              .text-body-1 {
+                margin-top: 10px;
+                color: $body-light;
+              }
+            }
+          }
+        }
+        // 체크박스
+        th,
+        td {
+          &:has(.v-checkbox-btn) {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            width: 44px;
+            min-width: 44px;
+            max-width: 44px;
+            &:after {
+              position: absolute;
+              top: 0;
+              right: -4px;
+              box-shadow: inset 8px -5px 11px -16px black;
+              width: 4px;
+              height: 100%;
+              content: "";
+            }
+          }
+          &.fixedCell {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            &-right {
+              position: sticky;
+              right: 0;
+              left: initial;
+              z-index: 2;
+              &:after {
+                position: absolute;
+                top: 0;
+                left: -4px;
+                box-shadow: inset -10px -7px 10px -16px black;
+                width: 4px;
+                height: 100%;
+                content: "";
+              }
+            }
+            &:after {
+              position: absolute;
+              top: 0;
+              right: -4px;
+              box-shadow: inset 8px -5px 11px -16px black;
+              width: 4px;
+              height: 100%;
+              content: "";
+            }
+          }
+          .rotate-90 {
+            transition: transform 0.2s ease-in-out;
+            .v-icon {
+              transform: rotate(90deg);
+              transition: transform 0.2s ease-in-out;
+            }
+          }
+        }
+        &:has(tbody.rt-table__noData) {
+          height: 300px;
+        }
+        .v-checkbox-btn {
+          // flex: 0 0 20px;
+          width: 20px;
+          --v-selection-control-size: 20px;
+          .v-selection-control__input > .v-icon {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+  &.rt-white-header {
+    .v-table__wrapper {
+      table {
+        thead {
+          tr {
+            th {
+              background-color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 권한 관리 테이블
+.rt-treeTable.v-table.rt-table {
+  .v-table__wrapper {
+    table {
+      table-layout: fixed;
+
+      th,
+      td {
+        // 체크박스
+        &:has(.v-checkbox-btn),
+         // 라디오
+        &:has(.v-radio-group) {
+          justify-content: center;
+          padding-inline: 6px;
+          width: 115px;
+          min-width: 115px;
+          max-width: 120px;
+          > div {
+            margin-inline: auto;
+          }
+          &:after {
+            display: none;
+          }
+        }
+        &:first-of-type,
+        &:second-of-type:has(button) {
+          width: 44px;
+          max-width: 44px;
+        }
+        .v-btn {
+          background-color: transparent !important;
+        }
+      }
+      .rotate-180 {
+        transition: transform 0.2s ease-in-out;
+        .v-icon {
+          transform: rotate(180deg);
+          transition: transform 0.2s ease-in-out;
+        }
+      }
+      tbody {
+        tr.active td {
+          background-color: rgba($bg-navy, 0.6);
+        }
+      }
+    }
+  }
+}
