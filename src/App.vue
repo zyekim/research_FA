@@ -1,8 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import DefaultLayout from "@/packages/layouts/DefaultLayout.vue";
+  const route = useRoute();
+  const layout = computed(() => {
+    return route.meta.layout || DefaultLayout;
+  });
+</script>
 
 <template>
   <v-app>
-    <router-view></router-view>
+    <component :is="layout">
+      <router-view></router-view>
+    </component>
   </v-app>
 </template>
 

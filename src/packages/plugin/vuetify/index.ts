@@ -2,13 +2,13 @@
  * iconset
  */
 
-import {aliases, mdi} from "vuetify/iconsets/mdi";
+// import {aliases, mdi} from "vuetify/iconsets/mdi";
 // import { customIcons } from "../components/icons/CustomIcon";
 
 /**
  * style
  */
-import "@mdi/font/css/materialdesignicons.css";
+// import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/styles";
 // import {DEFAULT_THEME} from "@/theme/DefaultTheme";
 

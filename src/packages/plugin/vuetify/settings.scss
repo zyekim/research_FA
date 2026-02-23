@@ -1,0 +1,132 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Vuetify variables overwrites
+ */
+
+@use "@/shared/styles/variables" as *;
+
+$rt-font-family:
+  "Pretendard",
+  -apple-system,
+  BlinkMacSystemFont,
+  helvetica,
+  "Apple SD Gothic Neo",
+  sans-serif;
+
+@use "vuetify/settings" with (
+  $body-font-family: $rt-font-family,
+  $grid-breakpoints: (
+    "xs": 0,
+    "sm": 360px,
+    "md": 768px,
+    "lg": 1024px,
+    "xl": 1440px,
+  ),
+  $border-radius-root: 8px,
+  $button-icon-border-radius: 8px,
+  $button-border-thin-width: 1px,
+  $switch-track-background: $body-light-gray,
+  $snackbar-background: rgba(0, 0, 0, 0.8),
+  $snackbar-font-size: 14px,
+  $snackbar-font-weight: 700,
+  $snackbar-line-height: 140%,
+  $snackbar-border-radius: 12px,
+  $snackbar-wrapper-min-width: 320px,
+  $snackbar-wrapper-max-width: 320px,
+  $snackbar-letter-spacing: normal,
+  $divider-opacity: 1,
+  $chip-height: 33px,
+  $card-color: rgba(var(--v-theme-on-surface), 1),
+  $button-color: rgba(var(--v-theme-on-surface), 1),
+  $typography: (
+    "rt-h1": (
+      "size": 24px,
+      "weight": 700,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "rt-h2": (
+      "size": 20px,
+      "weight": 700,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "rt-h3": (
+      "size": 18px,
+      "weight": 700,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "rt-h4": (
+      "size": 16px,
+      "weight": 700,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "primary-data": (
+      "size": 40px,
+      "weight": 700,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "2nd-data": (
+      "size": 32px,
+      "weight": 700,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "body-1": (
+      "size": 16px,
+      "weight": 400,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "body-2": (
+      "size": 14px,
+      "weight": 400,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "caption": (
+      "size": 12px,
+      "weight": 400,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "tiny": (
+      "size": 11px,
+      "weight": 400,
+      "line-height": 1.4,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+    "button": (
+      "size": 16px,
+      "weight": 700,
+      "line-height": 1,
+      "letter-spacing": normal,
+      "font-family": $rt-font-family,
+      "text-transform": none,
+    ),
+  )
+);
