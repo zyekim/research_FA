@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => ({
       vueTemplate: true,
     }),
     Components({
+      dts: true,
       dirs: ["src/packages/shared/components"],
     }),
     Vuetify({

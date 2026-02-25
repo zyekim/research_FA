@@ -4,10 +4,10 @@
  * Automatically included in `./src/main.ts`
  */
 // Types
-import type {App} from "vue";
+import type { App } from "vue";
 
 // pinia
-import {createPinia} from "pinia";
+import { createPinia } from "pinia";
 import piniaPersistedstate from "pinia-plugin-persistedstate";
 
 const pinia = createPinia();

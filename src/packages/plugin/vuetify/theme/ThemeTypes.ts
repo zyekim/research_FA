@@ -1,0 +1,42 @@
+export interface ThemeTypes {
+  name: string;
+  dark: boolean;
+  variables?: object;
+  colors: {
+    black: string;
+    white: string;
+    primary: string;
+    navy: string;
+    green: string;
+    point: string;
+    success: string;
+    blue: string;
+    error: string;
+    red: string;
+    standby: string;
+    orange: string;
+    "primary-blue": string;
+    purple: string;
+    "body-light": string;
+    "blue-navy": string;
+    "line-navy": string;
+    "tertiary-navy": string;
+    "bg-navy": string;
+    "bg-green": string;
+    "body-light-gray": string;
+    "light-gray": string;
+    "line-gray": string;
+    "bright-gray": string;
+    inputBorder: string;
+    surface: string;
+    background: string;
+    containerBg: string;
+    disable: string;
+    "on-surface"?: string;
+    "on-bg-navy"?: string;
+    "on-green"?: string;
+    "border-color"?: string;
+    "disabled-opacity"?: string;
+    "on-surface-variant"?: string;
+  };
+}
