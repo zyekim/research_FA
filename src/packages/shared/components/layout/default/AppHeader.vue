@@ -8,7 +8,7 @@
   >
     <template v-slot:prepend>
       <v-app-bar-nav-icon>
-        <v-icon>mdi-menu</v-icon>
+        <v-icon>mdi:mdi-menu</v-icon>
       </v-app-bar-nav-icon>
     </template>
     <v-app-bar-title>Vue 3 + Vuetify 3</v-app-bar-title>

@@ -28,7 +28,7 @@
     height: 100%;
     .v-container {
       margin-top: 20px;
-      border: 4px dashed #eee;
+      border: 2px dashed #767676;
       border-radius: 12px;
       height: calc(100% - 49px);
     }

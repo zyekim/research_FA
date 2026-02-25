@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
 
 import DefaultLayout from "@/packages/layouts/DefaultLayout.vue";
+import BlankLayout from "@/packages/layouts/BlankLayout.vue";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -11,6 +12,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/:pathMatch(.*)*",
     component: () => import("@auth/404Error.vue"),
+    meta: { layout: BlankLayout },
   },
   {
     path: "/",
