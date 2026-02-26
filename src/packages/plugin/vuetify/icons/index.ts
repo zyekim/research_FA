@@ -1,13 +1,8 @@
-import { h, type Component } from "vue";
+import { defineAsyncComponent, h } from "vue";
 import type { IconSet, IconProps } from "vuetify";
 
-const iconFiles = import.meta.glob("./svgs/*.vue", { eager: true });
+const iconFiles = import.meta.glob("./svgs/*.vue");
 
-/**
- * Converts a string to camelCase.
- * @param {string} str
- * @returns {string}
- */
 function camelize(str: string): string {
   return str
     .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
@@ -16,17 +11,29 @@ function camelize(str: string): string {
     .replace(/\s+/g, "");
 }
 
-const customSvgNameToComponent: Record<string, Component> = Object.fromEntries(
-  Object.entries(iconFiles).map(([path, module]) => {
-    const fileName = path.split("/").pop()?.replace(".vue", "");
-    const camelCaseName = fileName ? camelize(fileName) : "";
-    return [camelCaseName, (module as any).default];
+const customSvgNameToComponent = Object.fromEntries(
+  Object.entries(iconFiles).map(([path, loader]) => {
+    const fileName = path.split("/").pop()?.replace(".vue", "") ?? "";
+    return [
+      camelize(fileName),
+      defineAsyncComponent(loader as any), // 각 아이콘이 별도 chunk로 분리됨
+    ];
   })
 );
 
+// 아이콘 비동기호출
 const customIcons: IconSet = {
-  component: (props: IconProps) =>
-    h(customSvgNameToComponent[props.icon as string]),
+  component: (props: IconProps) => {
+    const name = typeof props.icon == "string" ? props.icon : "";
+    const component = customSvgNameToComponent[name];
+
+    if (!component) {
+      console.warn(`[customIcons] "${name}" 아이콘 없음`);
+      return h("span");
+    }
+
+    return h(component);
+  },
 };
 
 export { customIcons };
