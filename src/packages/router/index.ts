@@ -40,6 +40,13 @@ const routes: RouteRecordRaw[] = [
     name: "packing",
     meta: { layout: DefaultLayout, title: "패킹리스트" },
   },
+  {
+    path: "/settlement-list",
+    component: () =>
+      import("@/apps/express-service/views/settlement/SettlementList.vue"),
+    name: "settlementList",
+    meta: { layout: DefaultLayout, title: "정산 목록" },
+  },
 ];
 
 const router = createRouter({

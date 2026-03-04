@@ -11,6 +11,11 @@
   opacity: 1 !important;
 }
 
+.v-label.v-field-label {
+  color: $primary;
+  font-size: 13px;
+}
+
 .v-input {
   .v-selection-control {
     --v-disabled-opacity: 1;
@@ -30,9 +35,6 @@
   }
   .v-input__details {
     padding-inline: 10px !important;
-    @include respond-down("tablet") {
-      padding-inline: 14px !important;
-    }
     .v-messages {
       opacity: 1;
     }
@@ -42,7 +44,7 @@
     --v-field-padding-start: 10px;
     --v-field-padding-end: 10px;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: normal;
     .v-field__input {
       opacity: 1;
@@ -50,6 +52,7 @@
       min-height: var(--v-input-control-height);
       input::placeholder {
         color: #141b6d;
+        font-size: 13px;
       }
     }
     &.v-field--variant-outlined.v-field--focused {
@@ -67,7 +70,7 @@
     .v-field__append-inner {
       .v-icon {
         opacity: 1 !important;
-        font-size: 16px;
+        font-size: 14px;
       }
     }
     .v-field__append-inner .v-icon {
@@ -75,19 +78,6 @@
     }
     .v-field--appended {
       padding-inline-end: 6px;
-    }
-
-    // 모바일,태블릿
-    @include respond-down("tablet") {
-      --v-input-control-height: 48px;
-      --v-field-padding-start: 14px;
-      --v-field-padding-end: 14px;
-      .v-field__input {
-        min-height: var(--v-input-control-height);
-      }
-      .v-field--appended {
-        padding-inline-end: 8px;
-      }
     }
   }
   // 비활성화
@@ -148,13 +138,6 @@
         font-size: 18px;
       }
     }
-    // 반응형 추가
-    @include respond("mobile") {
-      --v-selection-control-size: 26px;
-      .v-selection-control__input > .v-icon {
-        font-size: 24px;
-      }
-    }
   }
 
   .v-selection-control--error:not(.v-selection-control--disabled) .v-label {
@@ -169,41 +152,35 @@
     .v-selection-control__input > .v-icon {
       font-size: 18px;
     }
-    @include respond("mobile") {
-      --v-selection-control-size: 26px;
-      .v-selection-control__input > .v-icon {
-        font-size: 24px;
-      }
-    }
   }
-  &.v-selection-control--disabled {
-    // 비활성화 icon
-    --v-disabled-opacity: 1;
-    .v-selection-control__input {
-      // default
-      border-radius: 0;
-      background: url(/src/assets/img/icon/disable-checkbox.png) no-repeat
-        center;
-      background-size: cover;
-      // indeterminate
-      &:has(input[aria-checked="mixed"]) {
-        background: url(/src/assets/img/icon/disable-checkbox-indeter.png)
-          no-repeat center;
-        background-size: cover;
-      }
-      svg {
-        display: none;
-      }
-    }
-    &.v-selection-control--dirty {
-      .v-selection-control__input {
-        // checked
-        background: url(/src/assets/img/icon/disable-checked.png) no-repeat
-          center;
-        background-size: cover;
-      }
-    }
-  }
+  // &.v-selection-control--disabled {
+  //   // 비활성화 icon
+  //   --v-disabled-opacity: 1;
+  //   .v-selection-control__input {
+  //     // default
+  //     border-radius: 0;
+  //     background: url(/src/assets/img/icon/disable-checkbox.png) no-repeat
+  //       center;
+  //     background-size: cover;
+  //     // indeterminate
+  //     &:has(input[aria-checked="mixed"]) {
+  //       background: url(/src/assets/img/icon/disable-checkbox-indeter.png)
+  //         no-repeat center;
+  //       background-size: cover;
+  //     }
+  //     svg {
+  //       display: none;
+  //     }
+  //   }
+  //   &.v-selection-control--dirty {
+  //     .v-selection-control__input {
+  //       // checked
+  //       background: url(/src/assets/img/icon/disable-checked.png) no-repeat
+  //         center;
+  //       background-size: cover;
+  //     }
+  //   }
+  // }
 }
 .v-radio {
   column-gap: 6px;
@@ -219,27 +196,20 @@
     .v-selection-control__input > .v-icon {
       font-size: 18px;
     }
-    // 반응형 추가
-    @include respond("mobile") {
-      --v-selection-control-size: 26px;
-      .v-selection-control__input > .v-icon {
-        font-size: 24px;
-      }
-    }
   }
 
-  &.v-selection-control--disabled {
-    --v-disabled-opacity: 1;
+  // &.v-selection-control--disabled {
+  //   --v-disabled-opacity: 1;
 
-    .v-selection-control__input {
-      border-radius: 0;
-      background: url(/src/assets/img/icon/disable-radio.png) no-repeat center;
-      background-size: cover;
-      svg {
-        display: none;
-      }
-    }
-  }
+  //   .v-selection-control__input {
+  //     border-radius: 0;
+  //     background: url(/src/assets/img/icon/disable-radio.png) no-repeat center;
+  //     background-size: cover;
+  //     svg {
+  //       display: none;
+  //     }
+  //   }
+  // }
   .v-selection-control--error:not(.v-selection-control--disabled) .v-label {
     color: $primary !important;
   }
@@ -256,9 +226,6 @@
   &.v-btn--size-default {
     font-weight: 700;
     font-size: 16px;
-    @include respond-down("tablet") {
-      --v-btn-height: 48px;
-    }
   }
   .v-btn__append {
     margin-inline-start: 4px;
