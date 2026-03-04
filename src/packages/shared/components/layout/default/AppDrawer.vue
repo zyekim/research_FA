@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useLayoutStore } from "@/packages/layouts/store/layout";
+const layoutStore = useLayoutStore();
+const { drawerRail } = storeToRefs(layoutStore);
+
 const menuList = [
   {
     title: "홈 대시보드",
@@ -27,15 +31,30 @@ const menuList = [
     title: "패킹리스트",
     path: "/packing",
   },
+  {
+    title: "정산 목록",
+    path: "/settlement-list",
+  },
 ];
+// watch(drawerRail, (val) => {
+//   console.log(val);
+// });
 </script>
 
 <template>
-  <v-navigation-drawer color="primary">
+  <v-navigation-drawer
+    color="primary"
+    permanent
+    width="200"
+    :rail="drawerRail"
+    rail-width="60"
+  >
+    <template #prepend> </template>
     <v-list
       nav
       v-for="(link, idx) in menuList"
       :key="idx"
+      :rail="drawerRail"
     >
       <v-list-group
         v-if="link.children"
@@ -56,7 +75,6 @@ const menuList = [
           link
           :to="child.path"
         >
-          <!-- :class="{ active: route.fullPath == child.urlPath }" -->
           {{ child.title }}
         </v-list-item>
       </v-list-group>

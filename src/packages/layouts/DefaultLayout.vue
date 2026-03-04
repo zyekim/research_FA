@@ -1,8 +1,8 @@
 <script lang="ts" setup></script>
 <template>
   <v-layout>
-    <AppHeader />
     <AppDrawer />
+    <AppHeader />
     <v-main>
       <div class="pageWrap overflow-auto">
         <div class="pageWrap__inner">
@@ -25,12 +25,11 @@
   }
   &__inner {
     min-width: 1600px;
-    height: 100%;
     .v-container {
       margin-top: 20px;
       border: 2px dashed #767676;
-      border-radius: 12px;
-      height: calc(100% - 49px);
+      border-radius: 0;
+      padding: 0;
     }
   }
 }
