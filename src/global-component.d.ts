@@ -21,5 +21,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VuetifyTable: typeof import('./packages/shared/components/global/serverTable/VuetifyTable.vue')['default']
+    WTable: typeof import('./packages/shared/components/global/Vtable/WTable.vue')['default']
   }
 }

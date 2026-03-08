@@ -35,6 +35,10 @@ const menuList = [
     title: "정산 목록",
     path: "/settlement-list",
   },
+  {
+    title: "재고 목록",
+    path: "/stock-list",
+  },
 ];
 // watch(drawerRail, (val) => {
 //   console.log(val);

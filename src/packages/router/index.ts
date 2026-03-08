@@ -22,30 +22,34 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/order",
-    component: () => import("@/apps/express-service/views/order/OrderList.vue"),
+    component: () => import("@/apps/express-service/order/OrderList.vue"),
     name: "orderList",
     meta: { layout: DefaultLayout, title: "주문 목록" },
   },
   {
     path: "/delivery-order",
-    component: () =>
-      import("@/apps/express-service/views/deliveryOrder/DOList.vue"),
+    component: () => import("@/apps/express-service/deliveryOrder/DOList.vue"),
     name: "deliveryOrder",
     meta: { layout: DefaultLayout, title: "D/O 목록" },
   },
   {
     path: "/packing",
-    component: () =>
-      import("@/apps/express-service/views/packing/PackingList.vue"),
+    component: () => import("@/apps/express-service/packing/PackingList.vue"),
     name: "packing",
     meta: { layout: DefaultLayout, title: "패킹리스트" },
   },
   {
     path: "/settlement-list",
     component: () =>
-      import("@/apps/express-service/views/settlement/SettlementList.vue"),
+      import("@/apps/express-service/settlement/SettlementList.vue"),
     name: "settlementList",
     meta: { layout: DefaultLayout, title: "정산 목록" },
+  },
+  {
+    path: "/stock-list",
+    component: () => import("@/apps/express-service/stock/List.vue"),
+    name: "stockeList",
+    meta: { layout: DefaultLayout, title: "재고 목록" },
   },
 ];
 

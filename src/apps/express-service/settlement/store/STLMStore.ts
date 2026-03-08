@@ -9,7 +9,7 @@ const { pagingList, pageNo, pageLim, totalPage } = storeToRefs(pagingStore);
 import type {
   searchSTLMType,
   sumTableType,
-} from "@/apps/express-service/views/settlement/types/common";
+} from "@/apps/express-service/settlement/types/common";
 
 export const useSTLMStore = defineStore("STLMStore", {
   state: () => ({
@@ -31,7 +31,7 @@ export const useSTLMStore = defineStore("STLMStore", {
       dateTo: "2026-03-04",
       stlmStatus: [],
       searchText: null,
-      carrierCodes: [],
+      carrierCodes: [] as string[],
     },
     loadingList: false,
     isVerified: false,
