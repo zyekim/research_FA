@@ -222,26 +222,61 @@ const selected = ref([]);
     @click="tempLogin"
     >로그인</v-btn
   >
-  <div class="action-bar">
-    <v-select
-      label="운송사"
-      v-model="searchData.carrierCodes"
-    ></v-select>
-    <v-text-field
-      label="조회기간(시작)"
-      v-model="searchData.dateFrom"
-      :clearable="false"
-      type="date"
-      @update:model-value="stlmStore.getList(1)"
-    ></v-text-field>
-    <v-text-field
-      label="조회기간(종료)"
-      v-model="searchData.dateTo"
-      :clearable="false"
-      type="date"
-      @update:model-value="stlmStore.getList(1)"
-    ></v-text-field>
-  </div>
+  <!-- <v-defaults-provider :defaults="{ VCheckboxBtn: { density: 'compact' } }">
+    <v-data-table-server
+      v-model:items-per-page="pageLim"
+      v-model:page="pageNo"
+      :loading="loadingList"
+      :headers="headerCols"
+      :items="STLMList"
+      height="60vh"
+      hide-default-footer
+      :itemsLength="pageSettings.totalPage"
+      v-model:select-all="selectAll"
+      v-model:selected="selected"
+      :item-selectable="(item: any) => item.shippingCompanyCode != 'KR002'"
+      show-select
+      item-value="rowNum"
+    >
+      <template #top="{ selectAll }">
+        <div class="action-bar">
+          <v-select
+            label="운송사"
+            v-model="searchData.carrierCodes"
+          ></v-select>
+          <v-text-field
+            label="조회기간(시작)"
+            v-model="searchData.dateFrom"
+            :clearable="false"
+            type="date"
+            @update:model-value="stlmStore.getList(1)"
+          ></v-text-field>
+          <v-text-field
+            label="조회기간(종료)"
+            v-model="searchData.dateTo"
+            :clearable="false"
+            type="date"
+            @update:model-value="stlmStore.getList(1)"
+          ></v-text-field>
+        </div>
+      </template>
+      <template #item.data-table-expand="{ item }">
+        <v-expand-transition>
+          {{ item.measurementUnit }}
+        </v-expand-transition>
+      </template>
+      <template #bottom="{ page, itemsPerPage, sortBy }">
+        <pagingComp
+          :model-value="page"
+          class="mt-0 pb-12"
+          :page-size="itemsPerPage"
+          :totalPage="pageSettings.totalPage"
+          @update:model-value="onChangePage"
+          @update:pageSize="onChangePageSize"
+        ></pagingComp>
+      </template>
+    </v-data-table-server>
+  </v-defaults-provider> -->
   <Vtable
     :loading="loadingList"
     :headers="headerCols"
@@ -285,7 +320,6 @@ const selected = ref([]);
   display: flex;
   gap: 8px;
   border-bottom: 1px solid #ddd;
-  background-color: #fff;
   padding: 15px 10px;
   > .v-input {
     flex: 0 1 145px;
